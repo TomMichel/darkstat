@@ -114,7 +114,7 @@ static char graph_js[] =
 " b.appendChild(b_autoreload);\n"
 " gr.appendChild(b);\n"
 "\n"
-" graph_autoreload();\n"
+" graph_reload();\n"
 "}\n"
 "\n"
 "function graph_reload() {\n"

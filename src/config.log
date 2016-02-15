@@ -447,7 +447,7 @@ configure:3936: checking for pcap.h
 configure:3936: result: yes
 configure:3990: checking for library containing setproctitle
 configure:4021: gcc -o conftest -flto -pipe -g -O2   conftest.c -lpcap -lz  >&5
-/tmp/ccUgOR7p.ltrans0.ltrans.o: In function `main':
+/tmp/cca46mnT.ltrans0.ltrans.o: In function `main':
 /home/tom/Bureau/darkstat/sources/conftest.c:36: undefined reference to `setproctitle'
 collect2: error: ld returned 1 exit status
 configure:4021: $? = 1
@@ -538,7 +538,7 @@ configure: failed program was:
 configure:4038: result: no
 configure:4048: checking for library containing strlcpy
 configure:4079: gcc -o conftest -flto -pipe -g -O2   conftest.c -lpcap -lz  >&5
-/tmp/ccyuTA0B.ltrans0.ltrans.o: In function `main':
+/tmp/cclYqg2a.ltrans0.ltrans.o: In function `main':
 /home/tom/Bureau/darkstat/sources/conftest.c:36: undefined reference to `strlcpy'
 collect2: error: ld returned 1 exit status
 configure:4079: $? = 1
@@ -629,7 +629,7 @@ configure: failed program was:
 configure:4096: result: no
 configure:4106: checking for library containing strlcat
 configure:4137: gcc -o conftest -flto -pipe -g -O2   conftest.c -lpcap -lz  >&5
-/tmp/ccrTMtkM.ltrans0.ltrans.o: In function `main':
+/tmp/cclRtCAj.ltrans0.ltrans.o: In function `main':
 /home/tom/Bureau/darkstat/sources/conftest.c:36: undefined reference to `strlcat'
 collect2: error: ld returned 1 exit status
 configure:4137: $? = 1

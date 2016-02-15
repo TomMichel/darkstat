@@ -299,29 +299,31 @@ int graph_import(const int fd) {
  */
 int prec_sec;
 int graph_export(FILE* fd2) { //initialement (const int fd)
-   unsigned int i, j;
+   unsigned int j;
    time_t timestamp = time(NULL);
    struct tm *tm;
 
    tm = localtime(&timestamp);
    int sec = tm->tm_sec;
 
+   j = graph_db[0]->pos;
+
    //if (!write64(fd, (uint64_t)last_real)) return 0;
-   for (i=0; i<graph_db_size; i++) {
+   //for (i=0; i<graph_db_size; i++) {
       //if (!write8(fd, graph_db[i]->num_bars)) return 0;
       //if (!write8(fd, graph_db[i]->pos)) return 0;
 
-      for (j=0; j<graph_db[i]->num_bars; j++) {
+      ////for (j=0; j<graph_db[i]->num_bars; j++) {
          //if (!write64(fd, graph_db[i]->in[j])) return 0;
          //if (!write64(fd, graph_db[i]->out[j])) return 0;
-         if((i == 0) && (j == graph_db[i]->pos) && (sec != prec_sec))
+         if(/*(i == 0) && (j == graph_db[i]->pos) && */(sec != prec_sec))
          {
             //fprintf(fd2, "sec : %d ; i : %" PRIu64 "; j : %" PRIu64 "\n", sec, graph_db[i]->in[j], graph_db[i]->out[j]);
-            fprintf(fd2, "%d;%d;%d;%d;%d;%d;%" PRIu64 ";%" PRIu64 "\n", tm->tm_mday, tm->tm_mon+1, tm->tm_year+1900, tm->tm_hour, tm->tm_min, sec, graph_db[i]->in[j], graph_db[i]->out[j]);
+            fprintf(fd2, "%d;%d;%d;%d;%d;%d;%" PRIu64 ";%" PRIu64 "\n", tm->tm_mday, tm->tm_mon+1, tm->tm_year+1900, tm->tm_hour, tm->tm_min, sec, graph_db[0]->in[j], graph_db[0]->out[j]);
             prec_sec = sec;
          }
-      }
-   }
+      //}
+   //}
 
    return 1;
 }
