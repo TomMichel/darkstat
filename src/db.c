@@ -325,7 +325,7 @@ db_import(const char *filename)
 
 /* Returns 0 on failure, 1 on success. */
 static int
-db_export_to_fd(FILE* fd2) //initialement (const int fd)
+db_export_to_fd(FILE* fd2, const char *iface) //initialement (const int fd)
 {
    /*
    if (!writen(fd, export_file_header, sizeof(export_file_header)))
@@ -340,13 +340,13 @@ db_export_to_fd(FILE* fd2) //initialement (const int fd)
 
    // on souhaite seulement exporter les données des graphs
    // et non les headers etc ...
-   if (!graph_export(fd2))
+   if (!graph_export(fd2, iface))
       return 0;
    return 1;
 }
 
 void
-db_export(const char *filename)
+db_export(const char *filename, const char *iface)
 {
    FILE* fd2 = NULL;
 
@@ -358,7 +358,7 @@ db_export(const char *filename)
       return;
    }*/
    verbosef("exporting db to file \"%s\"", filename);
-   if (!db_export_to_fd(fd2))
+   if (!db_export_to_fd(fd2, iface))
       warnx("export failed");
    else
       verbosef("export successful");

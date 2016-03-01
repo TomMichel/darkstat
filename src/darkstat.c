@@ -68,9 +68,12 @@ static unsigned long parsenum(const char *str,
    return n;
 }
 
+const char* iface;
+
 static int opt_iface_seen = 0;
 static void cb_interface(const char *arg) {
    cap_add_ifname(arg);
+   iface = arg;
    opt_iface_seen = 1;
 }
 
@@ -362,7 +365,7 @@ static void run_from_capfile(void) {
    graph_init();
    hosts_db_init();
    cap_from_file(opt_capfile);
-   if (export_fn != NULL) db_export(export_fn);
+   if (export_fn != NULL) db_export(export_fn, iface);
    hosts_db_free();
    graph_free();
    verbosef("Total packets: %llu, bytes: %llu",
@@ -452,7 +455,7 @@ int main(int argc, char **argv)
       if (export_pending) {
          if (export_fn != NULL)
          {
-            db_export(export_fn);
+            db_export(export_fn, iface);
             //sleep(1);
          }
          export_pending = 1;
@@ -483,7 +486,7 @@ int main(int argc, char **argv)
    http_stop();
    cap_stop();
    dns_stop();
-   if (export_fn != NULL) db_export(export_fn);
+   if (export_fn != NULL) db_export(export_fn, iface);
    hosts_db_free();
    graph_free();
    if (opt_daylog_fn != NULL) daylog_free();

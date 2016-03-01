@@ -298,7 +298,7 @@ int graph_import(const int fd) {
  * The caller is responsible for writing out the header first.
  */
 int prec_sec;
-int graph_export(FILE* fd2) { //initialement (const int fd)
+int graph_export(FILE* fd2, const char* iface) { //initialement (const int fd)
    unsigned int j;
    time_t timestamp = time(NULL);
    struct tm *tm;
@@ -319,7 +319,7 @@ int graph_export(FILE* fd2) { //initialement (const int fd)
          if(/*(i == 0) && (j == graph_db[i]->pos) && */(sec != prec_sec))
          {
             //fprintf(fd2, "sec : %d ; i : %" PRIu64 "; j : %" PRIu64 "\n", sec, graph_db[i]->in[j], graph_db[i]->out[j]);
-            fprintf(fd2, "%d;%d;%d;%d;%d;%d;%" PRIu64 ";%" PRIu64 "\n", tm->tm_mday, tm->tm_mon+1, tm->tm_year+1900, tm->tm_hour, tm->tm_min, sec, graph_db[0]->in[j], graph_db[0]->out[j]);
+            fprintf(fd2, "%s;%d;%d;%d;%d;%d;%d;%" PRIu64 ";%" PRIu64 "\n", iface, tm->tm_mday, tm->tm_mon+1, tm->tm_year+1900, tm->tm_hour, tm->tm_min, sec, graph_db[0]->in[j], graph_db[0]->out[j]);
             prec_sec = sec;
          }
       //}

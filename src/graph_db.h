@@ -23,7 +23,7 @@ void graph_free(void);
 void graph_acct(uint64_t amount, enum graph_dir dir);
 void graph_rotate(void);
 int graph_import(const int fd);
-int graph_export(FILE* fd2); // initialement (const int fd)
+int graph_export(FILE* fd2, const char *iface); // initialement (const int fd)
 
 struct str *html_front_page(void);
 struct str *xml_graphs(void);

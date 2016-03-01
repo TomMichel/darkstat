@@ -10,7 +10,7 @@
 struct addr;
 
 void db_import(const char *filename);
-void db_export(const char *filename);
+void db_export(const char *filename, const char *iface);
 void test_64order(void);
 
 /* read helpers */
